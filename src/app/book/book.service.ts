@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { enviroment } from '../app.config';
 import { Response } from '../response.model';
 import { formatDate } from '@angular/common';
+import { Params } from './params.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class BookService {
   private http = inject(HttpClient);
   private apiBookAdmin = `${enviroment.apiUrl}/Books`;
   constructor() { }
+  // params$ = new  BehaviorSubject<Params>({
+  //   pageNumber : 1,
+  //   pageSi: 5,
+  //   name: '',
+  //   authorName: ''
+  // })
 
   getAllBooks(params:{pageNumber:number, pageSize:number, name:string, authorName:string}):Observable<Response>{
     return this.http.get<Response>(this.apiBookAdmin, {params})
@@ -38,7 +45,7 @@ export class BookService {
   }
 
   deleteBookById(id:number):Observable<Book>{
-    return this.http.delete<Book>(`${this.apiBookAdmin}/${id}}`)
+    return this.http.delete<Book>(`${this.apiBookAdmin}/${id}`)
     .pipe(
       tap(() => {
         const index = this._bookSubject.getValue().findIndex((b) => b.id === id);
@@ -62,8 +69,7 @@ export class BookService {
     body.append('cover', bookFormData.cover);
     body.append('releaseDate', bookFormData.releaseDate);
     body.append('authorId', bookFormData.authorId.toString());
-    return this.http.put<Book>(`${this.apiBookAdmin}/${bookFormData.id}`, bookFormData);
-    // lanjutan edit service dan ts
+    return this.http.put<Book>(`${this.apiBookAdmin}/${bookFormData.id}`, body);
   }
 
 }

@@ -25,15 +25,33 @@ export class BookListComponent implements OnInit {
     name: new FormControl(''),
     authorName: new FormControl('')
   });
-  // totalRecord!: number;
-  // pagesize!:number;
+
   erroMessage?:string;
   destroyRef = inject(DestroyRef);
   constructor(private bookService:BookService){};
   ngOnInit(): void {
-    this.params.valueChanges.subscribe(() => this.getAllBook())
-    this.getAllBook()
-
+    this.params.valueChanges
+    .subscribe(() =>{
+      // if(this.params.value.name !== '' || this.params.value.authorName !== ''){
+      //   this.params.value.pageNumber = 1;
+      //   this.getAllBook()
+      // }
+      this.getAllBook()
+    }
+  )
+  this.params.controls.name.valueChanges.subscribe(
+    () => {
+      this.params.patchValue({pageNumber:1})
+      this.getAllBook()
+    }
+  )
+  this.params.controls.authorName.valueChanges.subscribe(
+    () => {
+      this.params.patchValue({pageNumber:1})
+      this.getAllBook()
+    }
+  )
+  this.getAllBook()
     // this.destroyRef.onDestroy(() => subcription.unsubscribe);
   }
 

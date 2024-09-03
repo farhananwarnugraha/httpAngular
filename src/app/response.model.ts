@@ -1,5 +1,5 @@
 export interface Response{
-  data:any;
+  data?:any;
   pageNumber: number;
   pageSize:number;
   totalRecords:number;

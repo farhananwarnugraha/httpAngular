@@ -35,6 +35,7 @@ export class BookItemComponent implements OnInit {
   }
   onDelete(id:number){
     const isDeleted = confirm("Are you sure deleted " + this.book.name + " ?")
+    console.log(id)
     if(isDeleted){
       this.bookService.deleteBookById(id).subscribe({
         next: (()=> {

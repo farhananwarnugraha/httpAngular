@@ -73,21 +73,40 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit(){
-    // console.log("test")
-    this.bookService.addNewBook({
-      name:  this.form.value.name!,
-      cover: this.form.value.cover,
-      releaseDate: this.form.value.releaseDate!,
-      authorId: Number(this.form.value.authorId)!
-    }).subscribe({
-      next: () => {
-        console.log(this.bookService.addNewBook)
-        window.alert('Add Data Done');
-        this.router.navigate(['../'], {relativeTo: this.route})
-      },
-      error: () => {
-        window.alert("Failed Add Data")
+    if(this.form.valid){
+      if(this.id){
+        this.bookService.updateBook({
+          id: Number(this.id),
+          name: this.form.value.name!,
+          cover: this.form.value.cover,
+          releaseDate: this.form.value.releaseDate!,
+          authorId: Number(this.form.value.authorId)
+        }).subscribe({
+          next: () => {
+            console.log("Book data with id: " + this.id + " Has been updated");
+            this.router.navigate(['../..'],{relativeTo: this.route})
+          },
+          error: () => {
+            console.log("Book with id: " + this.id + " Failed to updated");
+          }
+        })
+      }else{
+        this.bookService.addNewBook({
+          name:  this.form.value.name!,
+          cover: this.form.value.cover,
+          releaseDate: this.form.value.releaseDate!,
+          authorId: Number(this.form.value.authorId)!
+        }).subscribe({
+          next: () => {
+            console.log(this.bookService.addNewBook)
+            window.alert('Add Data Done');
+            this.router.navigate(['../'], {relativeTo: this.route})
+          },
+          error: () => {
+            window.alert("Failed Add Data")
+          }
+        });
       }
-    });
+    }
   }
 }
