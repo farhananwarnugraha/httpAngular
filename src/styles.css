@@ -1,1 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  box-sizing: border-box;
+}
+
+html{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body{
+  padding: 0;
+  margin: 0;
+}
+
+main{
+  width: 60%;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 768px;
+  max-width: 90%;
+  margin-top: 0 auto;
+  flex: 1;
+}
+
+/* header */
+header a {
+  color: #af8873;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #856756;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header .selected {
+  color: #7d6c63;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f4f1ea;
+}
+
+header form.search {
+  display: flex;
+}
+
+header form.search input:focus-visible {
+  outline: none;
+}
+
+header form.search input::placeholder {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* side nav */
+.side-nav{
+  width: 200px;
+  background-color: antiquewhite;
+  padding: 20px;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.side-nav div a{
+  text-decoration: none;
+  color: black;
+}
+
+.container{
+  display: flex;
+}
+
+table{
+  border-collapse:collapse;
+  width: 100%;
+  min-width: 768px;
+}
+
+table tr:nth-child(even){
+  background-color: #eee;
+}
+
+table th{
+  background-color: blanchedalmond;
+  padding: 0.5rem;
+}
+
+table td{
+  padding: 0.3rem;
+}
+
+tfoot tr td{
+  background-color: blanchedalmond;
+}

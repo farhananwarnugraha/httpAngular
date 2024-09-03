@@ -1,0 +1,43 @@
+<div class="table-action-container">
+  <button [routerLink]="['addBook']" routerLinkActive="router-link-active" >Add New Book</button>
+</div>
+<form [formGroup]="params" class="form-search">
+  <input type="text" formControlName="name" placeholder="seach by name">
+  <input type="text" formControlName="authorName" placeholder="search by author">
+  <input type="number" formControlName="pageSize">
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Name</th>
+      <th>Release Date</th>
+      <th>Book Author</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (book of books; track $index) {
+      <tr app-book-item [book]="book"></tr>
+    }@empty {
+      <tr>
+        <td colspan="4">Books Not Foud</td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <div class="pagination">
+          Page
+          @for (item of [].constructor(totalpage); track $index) {
+            <div class="page" (click)="onMovePage($index + 1)">
+              <a href="javascript:;" (click)="onMovePage($index + 1)"> {{ $index + 1}} </a>
+            </div>
+          }
+          <span> of {{ totalpage }}</span>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

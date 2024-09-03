@@ -1,0 +1,22 @@
+.table-action-container{
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.table-btn-container{
+  text-align: center;
+}
+
+.table-btn-container button{
+  margin: 0 0.5rem;
+}
+
+button{
+  padding: 10px;
+  background-color: rgb(1, 180, 1);
+  color: white;
+  border-radius: 10px;
+  border: 1px green solid;
+  font-size: 18px;
+}
+

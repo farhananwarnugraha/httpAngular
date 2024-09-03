@@ -1,0 +1,11 @@
+.form-control{
+  display: flex;
+}
+
+.form-control label{
+  flex: 0.3;
+}
+
+.form-control input{
+  flex: 0.7;
+}

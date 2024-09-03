@@ -1,0 +1,32 @@
+<div class="form-book">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label for="bookName">Book Name</label>
+      <input type="text" formControlName="name" id="bookName">
+    </div>
+    <div class="form-control">
+      <label for="releasedate">Release Date</label>
+      <input type="date" formControlName="releaseDate" id="releasedate">
+    </div>
+    <div class="form-control">
+      <label for="Cover">Cover Book</label>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="form-control">
+      <label for="bookauthor">Select Author</label>
+      <select formControlName="authorId" id="bookauthor">
+        <option value="">Choose Author</option>
+        @for (author of authors; track $index) {
+          <option value="{{ author.id }}">{{ author.name }}</option>
+        }
+      </select>
+    </div>
+    <div class="button-control">
+      <button class="submit" type="submit">Submit</button>
+      <button class="back" [routerLink]="['']">Back To Book List</button>
+    </div>
+  </form>
+  <div class="cover-image">
+    <img src="{{ imageCoveer }}" alt="">
+  </div>
+</div>

@@ -1,0 +1,5 @@
+  <td>{{ author.name }}</td>
+  <td class="table-btn-container">
+   <button class="edit" [routerLink]="['edit', author.id]">Edit</button> <!--,author.id-->
+   <button class="delete" (click)="onDelete(author.id)">Delete</button>
+  </td>

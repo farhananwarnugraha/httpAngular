@@ -1,0 +1,31 @@
+<div class="table-action-container">
+  <button [routerLink]="['new']" routerLinkActive="router-link-active" >Add New Auuthor</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (author of authors; track $index) {
+      <tr app-author [author]="author" ></tr>
+    }@empty {
+      @if(isLoading){
+        <tr>
+          <td colspan="2" style="text-align: center;">Mengambil Data</td>
+        </tr>
+      }@else{
+        <tr>
+          <td colspan="2" style="text-align: center;">
+            <p>Data Tidak ditemyukam</p>
+            @if(errorMessage){
+              <p>{{ errorMessage }}</p>
+            }
+          </td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
