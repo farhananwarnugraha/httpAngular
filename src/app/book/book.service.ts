@@ -65,4 +65,5 @@ export class BookService {
     return this.http.put<Book>(`${this.apiBookAdmin}/${bookFormData.id}`, bookFormData);
     // lanjutan edit service dan ts
   }
+
 }
