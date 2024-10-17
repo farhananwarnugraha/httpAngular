@@ -6,6 +6,7 @@ import { AuthorListComponent } from './authors/author-list/author-list.component
 import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
@@ -52,5 +53,9 @@ export const routes: Routes = [
         component: BookFormComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];

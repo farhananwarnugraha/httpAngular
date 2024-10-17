@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
-import { SidenavComponent } from "./sidenav/sidenav.component";
+import { HeaderComponent } from "./admin/header/header.component";
+import { SidenavComponent } from "./admin/sidenav/sidenav.component";
 
 @Component({
   selector: 'app-root',
